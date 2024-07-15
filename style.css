@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+.jumbotron {
+    background-image: url('https://i.pinimg.com/564x/21/6c/49/216c49f2a0cfc576aff9448e2193d834.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.container {
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#message {
+    font-size: 1.2em;
+}
+
+#ideasList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espace entre les idées */
+}
+
+.idea {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 300px; /* Largeur fixe pour les idées */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px; /* Hauteur minimale pour les idées */
+}
+
+.idea h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.idea p {
+    flex-grow: 1;
+}
+
+.idea button {
+    margin-top: 10px;
+}
+
+.approved {
+    border: 2px solid green;
+}
+
+.disapproved {
+    border: 2px solid red;
+}
