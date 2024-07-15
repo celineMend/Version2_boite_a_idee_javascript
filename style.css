@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color:  #ffffff;
 }
 
 .jumbotron {
@@ -15,6 +15,7 @@ body {
 .container {
     padding: 20px;
     border-radius: 5px;
+   
 }
 
 #message {
@@ -34,29 +35,12 @@ body {
     background-color: #fff;
     width: 300px; /* Largeur fixe pour les idées */
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 200px; /* Hauteur minimale pour les idées */
-}
-
-.idea h3 {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-.idea p {
-    flex-grow: 1;
-}
-
-.idea button {
-    margin-top: 10px;
 }
 
 .approved {
-    border: 2px solid green;
+    border: 3px solid rgb(69, 239, 69);
 }
 
 .disapproved {
-    border: 2px solid red;
+    border: 3px solid rgb(231, 17, 17);
 }

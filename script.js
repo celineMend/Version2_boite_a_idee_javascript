@@ -16,17 +16,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function displayIdeas() {
-        ideasList.innerHTML = ideas.map((idea, index) => `
-            <div class="idea border rounded p-3 mb-3 ${idea.approved ? 'approved' : 'disapproved'}">
-                <h3>${idea.title}</h3>
-                <p><strong>Catégorie:</strong> ${idea.category}</p>
-                <p>${idea.description}</p>
-                <p><strong>Status:</strong> ${idea.approved ? 'Approuvée' : 'Non Approuvée'}</p>
-                ${!idea.approved && !idea.disapproved ? `<button class="btn btn-warning btn-sm" onclick="editIdea(${index})">Modifier</button>` : ''}
-                <button class="btn btn-success btn-sm" onclick="toggleApproval(${index})">${idea.approved ? 'Désapprouver' : 'Approuver'}</button>
-                <button class="btn btn-danger btn-sm" onclick="deleteIdea(${index})">Supprimer</button>
-            </div>
-        `).join('');
+        ideasList.innerHTML = '';
+        ideas.forEach((idea, index) => {
+            const card = document.createElement('div');
+            card.className = 'card mx-3 mb-3';
+            card.style.width = '18rem';
+
+            card.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">${idea.title}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">${idea.category}</h6>
+                    <p class="card-text">${idea.description}</p>
+                    <p><strong>Status:</strong> ${idea.approved ? 'Approuvée' : 'Non Approuvée'}</p>
+                    ${!idea.approved && !idea.disapproved ? `<a href="#" class="btn btn-warning btn-sm" onclick="editIdea(${index})">Modifier</a>` : ''}
+                    <a href="#" class="btn btn-danger btn-sm" onclick="deleteIdea(${index})">Supprimer</a>
+                </div>
+            `;
+
+            // Appliquer la classe pour la bordure
+            if (idea.approved) {
+                card.classList.add('border', 'border-success');
+            } else if (idea.disapproved) {
+                card.classList.add('border', 'border-danger');
+            } else {
+                card.classList.add('border', 'border-danger');
+            }
+
+            ideasList.appendChild(card);
+        });
     }
 
     function resetForm() {
@@ -93,13 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
         ideaDescription.value = idea.description;
         ideas.splice(index, 1);
         localStorage.setItem('ideas', JSON.stringify(ideas));
-        displayIdeas();or
+        displayIdeas();
     };
 
     window.toggleApproval = (index) => {
         if (ideas[index].approved || ideas[index].disapproved) return;
-        ideas[index].approved = !ideas[index].approved;
-        ideas[index].disapproved = !ideas[index].approved; // If approved, disapproved should be false, and vice versa
+        ideas[index].approved = true;
+        ideas[index].disapproved = false; // Assurer qu'une fois approuvé, il ne peut pas être désapprouvé
         localStorage.setItem('ideas', JSON.stringify(ideas));
         displayIdeas();
     };
