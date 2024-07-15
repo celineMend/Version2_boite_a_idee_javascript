@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ideaDescription.value = idea.description;
         ideas.splice(index, 1);
         localStorage.setItem('ideas', JSON.stringify(ideas));
-        displayIdeas();
+        displayIdeas();or
     };
 
     window.toggleApproval = (index) => {
